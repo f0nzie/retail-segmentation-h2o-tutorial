@@ -6,3 +6,9 @@
 config.txt
 
 export/
+
+*.un~
+
+PARAMETERS~
+
+deployment/intrepo/
