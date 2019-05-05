@@ -1,0 +1,5 @@
+RSuiteVersion: 0.36.252
+RVersion: 3.5
+Project: retail-segmentation-h2o-tutorial
+Repositories: MRAN[2018-08-25]
+Artifacts: config_templ.txt
