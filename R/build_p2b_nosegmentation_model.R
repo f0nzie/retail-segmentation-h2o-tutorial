@@ -19,9 +19,8 @@ args <- args_parser()
 
 ###############################################################################
 
-library(data.table)
+library(segmentationmodels)
 library(h2o)
-library(logging)
 
 h2o_local <- h2o.init(nthreads = 4,
                       max_mem_size = "6g")
@@ -50,7 +49,7 @@ predictors <- setdiff(colnames(retail_train),
                         "purchased"))
 purchased_var <- "purchased"
 
-best_model <- segmentationmodels::find_best_classifier_model(
+best_model <- find_best_classifier_model(
   model_quality_measure = "AUC",
   algorithm = "glm",
   grid_id = "glm_grid",

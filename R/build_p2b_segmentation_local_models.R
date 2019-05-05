@@ -21,7 +21,7 @@ args <- args_parser()
 
 library(data.table)
 library(h2o)
-library(logging)
+library(segmentationmodels)
 
 h2o_local <- h2o.init(nthreads = 4,
                       max_mem_size = "6g")
@@ -55,14 +55,14 @@ purchased_var <- "purchased"
 segmentation_vars <- colnames(retail_train)[grep(pattern = "^frq_.*_",
                                                  x = colnames(retail_train))]
 
-segmentation_models <- segmentationmodels::build_segmentation_models(training_frame = h2o.rbind(retail_train,
+segmentation_models <- build_segmentation_models(training_frame = h2o.rbind(retail_train,
                                                                                                 retail_test),
                                                                      segmentation_vars = segmentation_vars,
                                                                      cluster_cnts = 2:5,
                                                                      rounds = 20)
 loginfo("--> Built segmentation models")
 
-segmentation_preds <- segmentationmodels::predict_segmentation_models(segmentation_models = segmentation_models,
+segmentation_preds <- predict_segmentation_models(segmentation_models = segmentation_models,
                                                                       train_df = retail_train,
                                                                       test_df = retail_test)
 
