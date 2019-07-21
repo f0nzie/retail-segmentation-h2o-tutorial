@@ -10,3 +10,5 @@ config.txt
 PARAMETERS~
 
 deployment/intrepo/
+
+*.RDS
